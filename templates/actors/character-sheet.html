@@ -1,0 +1,88 @@
+<form class="{{cssClass}}" autocomplete="off">
+  <header class="sheet-header">
+    <img class="profile-img" src="{{actor.img}}" data-edit="img" title="{{actor.name}}"/>
+    <div class="header-fields">
+      <h1 class="charname"><input name="name" type="text" value="{{actor.name}}" placeholder="Character Name"/></h1>
+      <div class="grid grid-3col">
+        <div class="grid-span-1">
+          <label>Level</label>
+          <input type="number" name="system.progression.level" value="{{system.progression.level}}" />
+        </div>
+        <div class="grid-span-1">
+          <label>XP</label>
+          <input type="number" name="system.progression.xp" value="{{system.progression.xp}}" />
+        </div>
+        <div class="grid-span-1">
+          <label>XP Max</label>
+          <input type="number" name="system.progression.xpMax" value="{{system.progression.xpMax}}" />
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <nav class="sheet-tabs tabs" data-group="primary">
+    <a class="item" data-tab="attributes">Attributes</a>
+    <a class="item" data-tab="inventory">Inventory</a>
+  </nav>
+
+  <section class="sheet-body">
+    <div class="tab" data-group="primary" data-tab="attributes">
+      <div class="grid grid-2col">
+        <div class="grid-span-1">
+          <div class="box">
+            <h3 class="box-header">Attributes</h3>
+            {{#each system.attributes as |attr key|}}
+            <div class="grid grid-3col-small">
+              <label>{{key}}</label>
+              <input type="number" name="system.attributes.{{key}}.value" value="{{attr.value}}" />
+              <span>{{attr.m2}} / {{attr.m5}} / {{attr.m10}}</span>
+            </div>
+            {{/each}}
+          </div>
+        </div>
+        <div class="grid-span-1">
+          <div class="box">
+            <h3 class="box-header">Resources</h3>
+            {{#each system.resources as |res key|}}
+            <div class="grid grid-3col-small">
+              <label>{{key}}</label>
+              <input type="number" name="system.resources.{{key}}.value" value="{{res.value}}" />
+              <span>/</span>
+              <input type="number" name="system.resources.{{key}}.max" value="{{res.max}}" />
+            </div>
+            {{/each}}
+          </div>
+          <div class="box">
+            <h3 class="box-header">Defenses</h3>
+            {{#each system.defenses as |def key|}}
+            <div class="grid grid-2col-small">
+              <label>{{key}}</label>
+              <span>{{def}}</span>
+            </div>
+            {{/each}}
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="tab" data-group="primary" data-tab="inventory">
+      <div class="box">
+        <h3 class="box-header">
+          <span>Items</span>
+          <a class="item-control item-create" title="Add Item" data-type="item"><i class="fas fa-plus"></i></a>
+        </h3>
+        <ol class="items-list">
+          {{#each items as |item id|}}
+          <li class="item" data-item-id="{{item.id}}">
+            <img src="{{item.img}}" title="{{item.name}}" width="24" height="24"/>
+            <h4 class="item-name">{{item.name}}</h4>
+            <div class="item-controls">
+              <a class="item-control item-edit" title="Edit Item"><i class="fas fa-edit"></i></a>
+              <a class="item-control item-delete" title="Delete Item"><i class="fas fa-trash"></i></a>
+            </div>
+          </li>
+          {{/each}}
+        </ol>
+      </div>
+    </div>
+  </section>
+</form>

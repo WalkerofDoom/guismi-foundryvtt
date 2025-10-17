@@ -1,8 +1,8 @@
 {
-  "id": "isgarr",
-  "title": "GUI.S.M.I.: regras de Is’garr",
-  "description": "Sistema para o RPG GUI.S.M.I.: regras de Is’garr, um mundo de fantasia e sobrevivência.",
-  "version": "2.0.0",
+  "id": "guismi",
+  "title": "GUI.S.M.I.: Survival Guide in an Improvised World",
+  "description": "A system for the GUI.S.M.I. RPG, a world of fantasy and survival.",
+  "version": "3.0.0",
   "authors": [
     {
       "name": "Guismi"
@@ -13,7 +13,7 @@
     "verified": "13"
   },
   "esmodules": [
-    "module/isgarr.mjs"
+    "module/guismi.mjs"
   ],
   "styles": [
     "css/isgarr.css"
@@ -25,26 +25,20 @@
       "path": "lang/pt-BR.json"
     }
   ],
-  "packs": [
-    {
-      "name": "habilidades",
-      "label": "Habilidades",
-      "system": "isgarr",
-      "path": "packs/habilidades.db",
-      "type": "Item",
-      "private": false
-    },
-    {
-      "name": "especies",
-      "label": "Espécies",
-      "system": "isgarr",
-      "path": "packs/especies.db",
-      "type": "Item",
-      "private": false
-    }
+  "actorTypes": [
+    "character"
   ],
-  "primaryTokenAttribute": "recursos.sangue",
-  "secondaryTokenAttribute": "recursos.mana",
+  "itemTypes": [
+    "species",
+    "path",
+    "weapon",
+    "armor",
+    "item",
+    "state"
+  ],
+  "packs": [],
+  "primaryTokenAttribute": "resources.sangue",
+  "secondaryTokenAttribute": "resources.mana",
   "url": "",
   "manifest": "",
   "download": "",
