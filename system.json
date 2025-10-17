@@ -2,15 +2,15 @@
   "id": "isgarr",
   "title": "GUI.S.M.I.: regras de Is’garr",
   "description": "Sistema para o RPG GUI.S.M.I.: regras de Is’garr, um mundo de fantasia e sobrevivência.",
-  "version": "1.1.0",
+  "version": "2.0.0",
   "authors": [
     {
-      "name": "Seu Nome Aqui"
+      "name": "Guismi"
     }
   ],
   "compatibility": {
     "minimum": "13",
-    "verified": "13.341"
+    "verified": "13"
   },
   "esmodules": [
     "module/isgarr.mjs"

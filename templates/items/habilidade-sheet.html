@@ -8,24 +8,12 @@
 
   <section class="sheet-body">
     <div class="form-group">
-      <label>Pré-requisitos</label>
-      <input type="text" name="system.prerequisitos" value="{{systemData.prerequisitos}}" />
-    </div>
-    <div class="form-group">
-      <label>Tipo</label>
-      <input type="text" name="system.tipo" value="{{systemData.tipo}}" />
-    </div>
-    <div class="form-group">
-      <label>Ação</label>
-      <input type="text" name="system.acao" value="{{systemData.acao}}" />
-    </div>
-    <div class="form-group">
-      <label>Gastos</label>
-      <input type="text" name="system.gastos" value="{{systemData.gastos}}" />
-    </div>
-    <div class="form-group">
       <label>Descrição</label>
-      <textarea name="system.description">{{systemData.description}}</textarea>
+        {{editor system.descricao target="system.descricao" button=true owner=owner editable=editable}}
+    </div>
+    <div class="form-group">
+      <label>Custo</label>
+      <input type="number" name="system.custo" value="{{item.system.custo}}" />
     </div>
   </section>
 </form>
