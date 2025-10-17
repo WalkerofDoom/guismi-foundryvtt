@@ -1,0 +1,34 @@
+{
+  "id": "isgarr",
+  "title": "GUI.S.M.I.: regras de Is’garr",
+  "description": "Sistema para o RPG GUI.S.M.I.: regras de Is’garr, um mundo de fantasia e sobrevivência.",
+  "version": "1.0.0",
+  "authors": [
+    {
+      "name": "Seu Nome Aqui"
+    }
+  ],
+  "compatibility": {
+    "minimum": "13",
+    "verified": "13.341"
+  },
+  "esmodules": [
+    "module/isgarr.mjs"
+  ],
+  "styles": [
+    "css/isgarr.css"
+  ],
+  "languages": [
+    {
+      "lang": "pt-BR",
+      "name": "Português (Brasil)",
+      "path": "lang/pt-BR.json"
+    }
+  ],
+  "primaryTokenAttribute": "recursos.sangue",
+  "secondaryTokenAttribute": "recursos.mana",
+  "url": "",
+  "manifest": "",
+  "download": "",
+  "license": "LICENSE.txt"
+}

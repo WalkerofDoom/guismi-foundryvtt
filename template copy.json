@@ -1,0 +1,61 @@
+{
+  "Actor": {
+    "types": ["personagem"],
+    "personagem": {
+      "biografia": {
+        "nome": "",
+        "jogador": "",
+        "idade": "",
+        "afiliacao": "",
+        "cla": "",
+        "cidade": "",
+        "especie": "",
+        "subespecie": "",
+        "descricao": ""
+      },
+      "atributos": {
+        "for": { "valor": 5, "mod": 0 },
+        "con": { "valor": 5, "mod": 0 },
+        "agi": { "valor": 5, "mod": 0 },
+        "des": { "valor": 5, "mod": 0 },
+        "int": { "valor": 5, "mod": 0 },
+        "sab": { "valor": 5, "mod": 0 },
+        "car": { "valor": 5, "mod": 0 }
+      },
+      "recursos": {
+        "sangue": { "valor": 10, "max": 10 },
+        "vigor": { "valor": 10, "max": 10 },
+        "mana": { "valor": 10, "max": 10 },
+        "fe": { "valor": 0, "max": 0 },
+        "pontosAcao": { "valor": 3, "max": 3 }
+      },
+      "progresso": {
+        "nivel": 1,
+        "xp": 0
+      },
+      "pericias": {}
+    }
+  },
+  "Item": {
+    "types": ["item", "habilidade", "vantagem"],
+    "templates": {
+      "base": {
+        "description": ""
+      }
+    },
+    "item": {
+      "templates": ["base"],
+      "quantidade": 1,
+      "peso": 0
+    },
+    "habilidade": {
+      "templates": ["base"],
+      "tipo": "racial",
+      "custo": "",
+      "acao": ""
+    },
+    "vantagem": {
+      "templates": ["base"]
+    }
+  }
+}
