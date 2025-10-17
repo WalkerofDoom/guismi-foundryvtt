@@ -7,20 +7,20 @@
       <div class="grid grid-3col">
         <div class="grid-span-1">
           <label>Espécie</label>
-          <select name="system.biografia.especie">
+          <select name="system.detalhes.especie">
             <option value="">-- Nenhuma --</option>
             {{#each especies as |especie|}}
-              <option value="{{especie.name}}" {{#if (eq especie.name ../systemData.biografia.especie)}}selected{{/if}}>{{especie.name}}</option>
+              <option value="{{especie.name}}" {{#if (eq especie.name ../actor.system.detalhes.especie)}}selected{{/if}}>{{especie.name}}</option>
             {{/each}}
           </select>
         </div>
         <div class="grid-span-1">
           <label>Caminho</label>
-          <input type="text" name="system.biografia.caminho" value="{{systemData.biografia.caminho}}" />
+          <input type="text" name="system.detalhes.caminho" value="{{actor.system.detalhes.caminho}}" />
         </div>
         <div class="grid-span-1">
           <label>Nível</label>
-          <input type="number" name="system.detalhes.nivel" value="{{systemData.detalhes.nivel}}" />
+          <input type="number" name="system.detalhes.nivel" value="{{actor.system.detalhes.nivel}}" />
         </div>
       </div>
     </div>
@@ -38,43 +38,38 @@
       <div class="grid grid-3col">
         <div class="grid-span-1">
           <div class="box">
-            <h3 class="box-header">Atributos</h3>
+            <h3 class="box-header">Habilidades</h3>
             <div class="grid grid-atributos-header">
-              <span></span><span>Valor</span><span>M2</span><span>M5</span><span>M10</span>
+              <span></span><span>Valor</span><span>M2</span><span>M5</span>
             </div>
-            {{#each systemData.atributos as |attr key|}}
+            {{#each actor.system.habilidades as |habilidade key|}}
             <div class="grid grid-atributos-row">
-              <a class="rollable" data-type="atributo" data-key="{{key}}">{{key}}</a>
-              <input type="number" name="system.atributos.{{key}}.valor" value="{{attr.valor}}" />
-              <span>{{attr.m2}}</span><span>{{attr.m5}}</span><span>{{attr.m10}}</span>
+              <a class="rollable" data-type="habilidade" data-key="{{key}}">{{key}}</a>
+              <input type="number" name="system.habilidades.{{key}}" value="{{habilidade}}" />
+              <span>{{habilidade.m2}}</span><span>{{habilidade.m5}}</span>
             </div>
             {{/each}}
           </div>
           <div class="box">
             <h3 class="box-header">Recursos</h3>
-            {{#each systemData.recursos as |res key|}}
-              {{#if (eq key "pontosAcao")}}
-                <div class="grid grid-recursos-pa">
-                  <label>{{key}}</label>
-                  <span>{{res.valor}} / {{res.max}}</span>
-                  <label>Gastos:</label>
-                  <input type="number" name="system.recursos.{{key}}.gastos" value="{{res.gastos}}" />
-                </div>
-              {{else}}
-                <div class="grid grid-3col-small">
-                  <label>{{key}}</label>
-                  <input type="number" name="system.recursos.{{key}}.valor" value="{{res.valor}}" />
-                  <span>/</span>
-                  <input type="number" name="system.recursos.{{key}}.max" value="{{res.max}}" />
-                </div>
-              {{/if}}
-            {{/each}}
+            <div class="grid grid-recursos-row">
+                <label>Vida</label>
+                <input type="number" name="system.recursos.vida.value" value="{{actor.system.recursos.vida.value}}" />
+                <span>/</span>
+                <input type="number" name="system.recursos.vida.max" value="{{actor.system.vidaMax}}" />
+            </div>
+            <div class="grid grid-recursos-row">
+                <label>Sangue</label>
+                <input type="number" name="system.recursos.sangue.value" value="{{actor.system.recursos.sangue.value}}" />
+                <span>/</span>
+                <input type="number" name="system.recursos.sangue.max" value="{{actor.system.sangueMax}}" />
+            </div>
           </div>
         </div>
         <div class="grid-span-2 box">
            <h3 class="box-header">Perícias</h3>
            <div class="grid grid-2col">
-            {{#each systemData.pericias as |pericia key|}}
+            {{#each actor.system.pericias as |pericia key|}}
               <div class="grid grid-pericias-row">
                 <a class="rollable" data-type="pericia" data-key="{{key}}">{{key}}</a>
                 <input type="number" name="system.pericias.{{key}}.valor" value="{{pericia.valor}}" />
@@ -85,7 +80,6 @@
         </div>
       </div>
     </div>
-    <!-- O resto das abas (habilidades, inventário, etc.) continua igual ao da Fase 7 -->
     <div class="tab" data-group="primary" data-tab="habilidades">
       <div class="box">
         <h3 class="box-header">
@@ -111,27 +105,7 @@
     <div class="tab" data-group="primary" data-tab="inventario">
       <div class="box">
         <h3 class="box-header">
-          <span>Armas</span>
-          <a class="item-control item-create" title="Adicionar Arma" data-type="arma"><i class="fas fa-plus"></i></a>
-        </h3>
-        <ol class="items-list">
-          {{#each actor.items as |item id|}}
-            {{#if (eq item.type "arma")}}
-            <li class="item" data-item-id="{{item.id}}">
-              <img src="{{item.img}}" title="{{item.name}}" width="24" height="24"/>
-              <h4 class="item-name">{{item.name}}</h4>
-              <div class="item-controls">
-                <a class="item-control item-edit" title="Editar Arma"><i class="fas fa-edit"></i></a>
-                <a class="item-control item-delete" title="Excluir Arma"><i class="fas fa-trash"></i></a>
-              </div>
-            </li>
-            {{/if}}
-          {{/each}}
-        </ol>
-      </div>
-      <div class="box">
-        <h3 class="box-header">
-          <span>Itens Gerais</span>
+          <span>Itens</span>
           <a class="item-control item-create" title="Adicionar Item" data-type="item"><i class="fas fa-plus"></i></a>
         </h3>
         <ol class="items-list">
@@ -153,12 +127,7 @@
     <div class="tab" data-group="primary" data-tab="biografia">
       <div class="box">
         <h3 class="box-header">Detalhes Biográficos</h3>
-        {{#each systemData.biografia as |valor key|}}
-          <div class="grid grid-biography">
-            <label>{{key}}</label>
-            <textarea name="system.biografia.{{key}}" rows="3">{{valor}}</textarea>
-          </div>
-        {{/each}}
+        {{editor system.detalhes.biografia target="system.detalhes.biografia" button=true owner=owner editable=editable}}
       </div>
     </div>
   </section>

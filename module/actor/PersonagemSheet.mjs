@@ -10,19 +10,24 @@ export default class PersonagemSheet extends ActorSheet {
     });
   }
 
-  async getData() {
-    const context = super.getData();
+  async getData(options) {
+    const context = await super.getData(options);
     context.systemData = context.actor.system;
 
     // Carrega as espécies do compêndio
     context.especies = [];
     const pack = game.packs.get("isgarr.especies");
     if (pack) {
-      const docs = await pack.getDocuments();
-      context.especies = docs.map(i => ({id: i.id, name: i.name}));
+        const index = await pack.getIndex();
+        context.especies = index.map(i => ({ id: i._id, name: i.name }));
     }
-    
+
     return context;
+  }
+
+  _getSubmitData(updateData) {
+    let formData = super._getSubmitData(updateData);
+    return formData;
   }
 
   activateListeners(html) {
